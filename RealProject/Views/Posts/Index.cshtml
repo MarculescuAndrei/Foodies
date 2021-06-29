@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Afisare postari</h2>
+<h4>@ViewBag.message</h4>
+
+@foreach (var post in ViewBag.Posts)
+{
+    <h2>@post.Title</h2>
+    <p>@post.Content</p>
+    <p>@post.Date</p>
+    <p>@post.Tag.TagName</p>
+    <a href="/Posts/Show/@post.Id">Show post</a>
+    <form method="post" action="/Posts/Delete/@post.Id">
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <button type="submit">Delete post</button>
+    </form>
+    <br />
+    <hr />
+    <br />
+}
+
+<a href="/Posts/New">Adauga postare</a>
+<br />
+
